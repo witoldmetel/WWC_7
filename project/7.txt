@@ -1,0 +1,6 @@
+zadanie 7
+
+1. start 20.03.
+2. html/css/js
+3. rwd obowiazkowo
+4. przydatne hasla: html timeline, infinite scroll
