@@ -12,7 +12,9 @@
 
 body {
     background: url("../img/background.png") no-repeat fixed;
+    background-size: cover;
     font-family: "Segoe", sans-serif;
+    margin: 0 auto;
 }
 
 .header {
@@ -21,6 +23,8 @@ body {
 }
 
 #timeline {
+    color: $font-color;
+    position: relative;
     h1.timeline__title {
         text-align: center;
         font-size: 3rem;
@@ -28,8 +32,8 @@ body {
         margin-bottom: 20px;
     }
     p.timeline__description {
-        text-align: center;
-        max-width: 90%;
+        text-align: justify;
+        max-width: 75%;
         margin: auto;
         margin-bottom: 45px;
     }
@@ -43,6 +47,16 @@ body {
             height: $container-height;
             margin: 0 auto;
         }
+        &::before {
+            z-index: 1;
+            content: "";
+            position: absolute;
+            top: -25px;
+            left: 49%;
+            background: url("../img/circle.png") no-repeat center;
+            width: 30px;
+            height: 30px;
+        }
         &::after {
             z-index: 1;
             content: "";
@@ -52,7 +66,8 @@ body {
             left: 50%;
             border-left: $border;
             @include mq-lg {
-                border-left: 1px solid $timeline;
+                border-left: 6px solid $timeline;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
             }
         }
     }
@@ -63,6 +78,7 @@ body {
         max-width: 94%;
         z-index: 2;
         background: $background;
+        border-radius: 15px;
         @include mq-sm {
             max-width: 60%;
             box-shadow: $box-shadow;
@@ -83,10 +99,12 @@ body {
                     border-left-width: 15px;
                     border-left-style: solid;
                     left: 100%;
+                    top: 25px;
                 }
                 .timeline-card--head::before {
                     @extend %marker;
-                    left: $marker-dist + 1;
+                    left: $marker-dist + 3.5;
+                    top: 35px;
                 }
             }
             &:nth-child(even) {
@@ -96,10 +114,12 @@ body {
                     border-right-width: 15px;
                     border-right-style: solid;
                     right: 100%;
+                    top: 25px;
                 }
                 .timeline-card--head::before {
                     @extend %marker;
-                    right: $marker-dist - 1;
+                    right: $marker-dist - 3.5;
+                    top: 35px;
                 }
             }
             &:nth-child(2) {
@@ -111,19 +131,9 @@ body {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            color: #fff;
+            color: $font-color;
             font-weight: 400;
             padding: 0 17px;
-            .number-box {
-                display: inline;
-                float: left;
-                margin: $inner-margin;
-                padding: 10px;
-                font-size: $number-size;
-                line-height: $number-size;
-                font-weight: 600;
-                background: rgba(0, 0, 0, 0.17);
-            }
             h2 {
                 color: #4e4e4e;
                 font-family: "Segoe";
@@ -182,14 +192,53 @@ body {
                 }
             }
         }
-        @for $i from 1 through $items {
-            &--step#{$i} {
-                $color: nth($colors, ((($i - 1) % 4) + 1));
-                background-color: $color;
-                .timeline-card--head::after {
-                    border-color: $color;
-                }
-            }
-        }
+    }
+    .loading-content {
+        content: "";
+        position: absolute;
+        bottom: -35px;
+        left: 44%;
+        width: 149px;
+        height: 32px;
+        background-color: red;
+        border-radius: 15px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .loading-content__loader {
+        z-index: 2;
+        font-size: 3px;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        position: relative;
+        text-indent: -9999em;
+        -webkit-animation: load 1.1s infinite ease;
+        animation: load 1.1s infinite ease;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    .loading-content__text {
+        color: #7e7e7e;
+        font-family: "Segoe";
+        font-size: 19px;
+        font-weight: 300;
+        line-height: 23px;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .footer__title {
+        color: $font-color;
+        font-family: "Segoe";
+        font-size: 17px;
+        margin-top: 80px;
+        margin-bottom: 55px;
     }
 }
