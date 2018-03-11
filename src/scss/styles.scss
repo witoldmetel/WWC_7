@@ -1,147 +1,174 @@
-/* Settings */
+/* Reset */
 
 @import url(reset.css);
 
+/* Settings */
+
 @import "settings";
+
+/* Border Box */
 
 * {
     box-sizing: border-box;
-    /* css3 rec */
-    -moz-box-sizing: border-box;
-    /* ff2 */
-    -ms-box-sizing: border-box;
-    /* ie8 */
-    -webkit-box-sizing: border-box;
-    /* safari3 */
-    -khtml-box-sizing: border-box;
-    /* konqueror */
-    font-family: 'Segoe', sans-serif;
 }
+
+/* Fonts */
 
 body {
-    background-image: url("../img/background.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    font-family: "Segoe", sans-serif;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.header {
-    padding: 34px 0;
-}
-
-.main {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-    .main__info {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        text-align: justify;
-        width: 70%;
-        color: #fff;
-        margin-bottom: 30px;
-        .info__title {
-            font-size: 51px;
-            font-weight: 300;
-            line-height: 23px;
-            padding-bottom: 34px;
-        }
-        .info__description {
-            font-size: 17px;
-            font-weight: 400;
-            line-height: 23px;
-        }
+#timeline {
+    padding: 100px 0;
+    background: $background;
+    border-top: $border;
+    border-bottom: $border;
+    h1.timeline__title {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 200;
+        margin-bottom: 20px;
     }
-    .main__timeline {
+    p.timeline__description {
+        text-align: center;
+        max-width: 90%;
+        margin: auto;
+        margin-bottom: 45px;
+    }
+    .timeline-wrapper {
         position: relative;
-        max-width: 1440px;
-        margin: 0 auto;
+        margin: auto;
+        @include mq-lg {
+            display: flex;
+            flex-flow: column wrap;
+            width: $container-width;
+            height: $container-height;
+            margin: 0 auto;
+        }
         &::after {
-            content: '';
+            z-index: 1;
+            content: "";
             position: absolute;
-            width: 6px;
-            background-color: white;
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -3px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
+            border-left: $border;
+            @include mq-lg {
+                border-left: 1px solid $timeline;
+            }
         }
-        .timeline__container {
-            padding: 10px 40px;
+    }
+    .timeline-card {
+        position: relative;
+        display: block;
+        margin: 10px auto 80px;
+        max-width: 94%;
+        z-index: 2;
+        @include mq-sm {
+            max-width: 60%;
+            box-shadow: $box-shadow;
+        }
+        @include mq-md {
+            max-width: 40%;
+        }
+        @include mq-lg {
+            max-width: $card-width;
+            height: $card-height;
+            margin: $outer-margin;
+            margin-top: $outer-margin/2;
+            margin-bottom: $outer-margin/2;
+            &:nth-child(odd) {
+                margin-right: $outer-margin/2;
+                .timeline-card--head::after {
+                    @extend %arrow;
+                    border-left-width: 15px;
+                    border-left-style: solid;
+                    left: 100%;
+                }
+                .timeline-card--head::before {
+                    @extend %marker;
+                    left: $marker-dist + 1;
+                }
+            }
+            &:nth-child(even) {
+                margin-left: $outer-margin/2;
+                .timeline-card--head::after {
+                    @extend %arrow;
+                    border-right-width: 15px;
+                    border-right-style: solid;
+                    right: 100%;
+                }
+                .timeline-card--head::before {
+                    @extend %marker;
+                    right: $marker-dist - 1;
+                }
+            }
+            &:nth-child(2) {
+                margin-top: $stagger;
+            }
+        }
+        .timeline-card--head {
             position: relative;
-            background-color: inherit;
-            width: 50%;
-            &::after {
-                content: '';
-                position: absolute;
-                width: 12px;
-                height: 12px;
-                right: -271.5px;
-                background-color: white;
-                top: 15px;
-                border-radius: 50%;
-                z-index: 1;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-weight: 400;
+            .number-box {
+                display: inline;
+                float: left;
+                margin: $inner-margin;
+                padding: 10px;
+                font-size: $number-size;
+                line-height: $number-size;
+                font-weight: 600;
+                background: rgba(0, 0, 0, 0.17);
+            }
+            h2 {
+                color: #4e4e4e;
+                font-family: "Segoe";
+                font-size: 21px;
+                font-weight: 300;
+                line-height: 23px;
+                @include mq-sm {
+                    font-size: 165%;
+                    line-height: 1.2rem;
+                }
+                span {
+                    display: block;
+                    font-size: 0.6rem;
+                    margin: 0;
+                    @include mq-sm {
+                        font-size: 0.8rem;
+                    }
+                }
             }
         }
-        .timeline__container--left {
-            left: -50%;
-            &::before {
-                content: " ";
-                height: 0;
-                position: absolute;
-                top: 22px;
-                width: 0;
-                z-index: 1;
-                right: -235px;
-                border: medium solid white;
-                border-width: 10px 0 10px 10px;
-                border-color: transparent transparent transparent white;
+        .timeline-card--body {
+            background: #fff;
+            border: $border;
+            border-top: 0;
+            padding: $inner-margin;
+            @include mq-lg {
+                height: $body-height;
+            }
+            p {
+                font-size: 14px;
+                line-height: 18px;
+                margin-bottom: $inner-margin;
+            }
+            img {
+                display: block;
+                width: 100%;
             }
         }
-        .timeline__container--right {
-            left: 50%;
-            &::before {
-                content: " ";
-                height: 0;
-                position: absolute;
-                top: 22px;
-                width: 0;
-                z-index: 1;
-                left: 30px;
-                border: medium solid white;
-                border-width: 10px 10px 10px 0;
-                border-color: transparent white transparent transparent;
+        @for $i from 1 through $items {
+            &--step#{$i} {
+                $color: nth($colors, ((($i - 1) % 4) + 1));
+                background-color: $color;
+                .timeline-card--head::after {
+                    border-color: $color;
+                }
             }
-            &::after {
-                left: -6px;
-            }
-
-        }
-        .content {
-            position: relative;
-            padding: 21px 17px;
-            min-width: 451px;
-            max-height: 452px;
-            background-color: white;
-            border-radius: 6px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.21);
         }
     }
 }
