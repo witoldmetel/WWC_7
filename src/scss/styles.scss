@@ -20,6 +20,7 @@ body {
 .header {
     display: flex;
     justify-content: center;
+    margin-top: 35px;
 }
 
 #timeline {
@@ -147,9 +148,16 @@ body {
             .content__fig {
                 position: relative;
                 margin: 17px;
+                -webkit-transition: all 0.65s;
+                transition: all 0.65s;
+                overflow: hidden;
                 .fig_img {
                     display: block;
                     width: 100%;
+                    &:hover {
+                        -webkit-transform: scale(1.2) rotate(5deg);
+                        transform: scale(1.2) rotate(5deg);
+                    }
                 }
                 .fig_figcap {
                     position: absolute;
@@ -179,10 +187,9 @@ body {
                     width: 26px;
                     height: 26px;
                 }
-                .icon--twitter {
-                    background: url("../img/twitter-icon.png") no-repeat center;
-                    width: 27px;
-                    height: 27px;
+                .fa-twitter-square {
+                    color: #7e7e7e;
+                    font-size: 27px;
                 }
                 .btn--text {
                     color: #7e7e7e;
@@ -200,12 +207,13 @@ body {
         left: 44%;
         width: 149px;
         height: 32px;
-        background-color: red;
-        border-radius: 15px;
+        background-color: #fff;
+        border-radius: 10px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
         display: flex;
         justify-content: space-around;
         align-items: center;
+        padding-left: 10px;
     }
     .loading-content__loader {
         z-index: 2;
