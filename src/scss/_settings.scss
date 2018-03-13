@@ -40,11 +40,11 @@ $items: 4;
 $rows: ceil($items/2);
 /* Card sizing */
 
-$card-height: 400px;
+$card-height: 580px;
 $card-width: 450px;
 $inner-margin: 15px;
 $number-size: 35px;
-$stagger: 180px;
+$stagger: 150px;
 $outer-margin: 90px;
 $marker-size: 12px;
 /* Colors */
@@ -52,12 +52,16 @@ $marker-size: 12px;
 $background: #fff;
 $font-color: #fff;
 $timeline: #fff;
+$font-color-card: #7e7e7e;
+$facebook-color: #3b5998;
+$twitter-color: #00aced;
+$delete-icon-color: rgb(238, 34, 34);
+
 /* Calculations */
 
 $container-height: $rows * ($card-height + $outer-margin)+$stagger;
 $container-width: $card-width*2+$outer-margin*3;
 $head-height: $number-size+50;
-$body-height: $card-height - $head-height;
 $marker-dist: $card-width+$outer-margin/2 - $marker-size/2;
 /* Placeholders */
 
@@ -121,5 +125,19 @@ $counter: $items - $rows+2;
     }
     87.5% {
         box-shadow: 0em -2.6em 0em 0em rgba(61, 61, 61,  0.2), 1.8em -1.8em 0 0em rgba(61, 61, 61,  0.2), 2.5em 0em 0 0em rgba(61, 61, 61,  0.2), 1.75em 1.75em 0 0em rgba(61, 61, 61,  0.2), 0em 2.5em 0 0em rgba(61, 61, 61,  0.2), -1.8em 1.8em 0 0em rgba(61, 61, 61,  0.5), -2.6em 0em 0 0em rgba(61, 61, 61,  0.7), -1.8em -1.8em 0 0em rgba(61, 61, 61,  0);
+    }
+}
+
+/* Add Commnet btn */
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+    60% {
+        transform: rotate(359deg)
+    }
+    100% {
+        transform: rotate(359deg)
     }
 }

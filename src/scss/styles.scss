@@ -23,6 +23,17 @@ body {
     margin-top: 35px;
 }
 
+.btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
+
 #timeline {
     color: $font-color;
     position: relative;
@@ -88,8 +99,8 @@ body {
             max-width: 40%;
         }
         @include mq-lg {
-            max-width: $card-width;
-            min-height: $card-height;
+            width: $card-width;
+            max-height: $card-height;
             margin: $outer-margin;
             margin-top: $outer-margin/2;
             margin-bottom: $outer-margin/2;
@@ -132,11 +143,10 @@ body {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            color: $font-color;
             font-weight: 400;
             padding: 0 17px;
             h2 {
-                color: #4e4e4e;
+                color: $font-color-card;
                 font-family: "Segoe";
                 font-size: 21px;
                 font-weight: 300;
@@ -145,6 +155,7 @@ body {
             }
         }
         .timeline-card--body {
+            min-height: 330px;
             .content__fig {
                 position: relative;
                 margin: 17px;
@@ -163,7 +174,7 @@ body {
                     position: absolute;
                     right: 10px;
                     bottom: -3px;
-                    color: #ffffff;
+                    color: $font-color;
                     font-family: "Museo";
                     font-size: 29px;
                     font-weight: 400;
@@ -175,37 +186,88 @@ body {
                 justify-content: flex-start;
                 align-items: center;
                 margin: 0 17px;
-                .btn {
-                    border: none;
-                    background-color: transparent;
-                    cursor: pointer;
-                }
                 .btn--icon {
                     margin-right: 3px;
                 }
                 .fa-facebook-square,
                 .fa-twitter-square {
-                    color: #7e7e7e;
+                    color: $font-color-card;
                     font-size: 27px;
                     &:hover {
-                        transition: all 0.3s;
-                        font-size: 2.2rem;
+                        transition: all 0.5s;
                     }
                 }
                 .fa-facebook-square:hover {
-                    color: #3b5998;
+                    color: $facebook-color;
                 }
                 .fa-twitter-square:hover {
-                    color: #00aced;
+                    color: $twitter-color;
                 }
                 .btn--text {
-                    color: #7e7e7e;
+                    color: $font-color-card;
                     font-size: 21px;
                     font-weight: 300;
                     line-height: 23px;
                     &:hover {
                         transition: all 0.3s;
                         font-size: 30px;
+                    }
+                }
+            }
+        }
+        .comment-cnt {
+            color: $font-color-card;
+            margin: 20px 17px;
+            .comment-list {
+                overflow-y: scroll;
+                max-height: 100px;
+                margin-bottom: 15px;
+                .comment-list__element {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border: 1px solid #d6d6d6;
+                    background-color: #f2f2f2;
+                    padding: 5px;
+                    margin-bottom: 5px;
+                    .comment-list__element--text {
+                        width: 90%;
+                    }
+                    .comment-list__element--delete {
+                        width: 10%;
+                        .fa-times {
+                            color: $font-color-card;
+                            font-size: 20px;
+                            &:hover {
+                                transition: all 0.3s;
+                                color: $delete-icon-color;
+                            }
+                        }
+                    }
+                }
+            }
+            .comment-input {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: $font-color-card;
+                .comment-input__textarea {
+                    width: 80%;
+                    color: $font-color-card;
+                    border: 1px solid #d6d6d6;
+                    background-color: #f2f2f2;
+                    resize: none;
+                    outline: none;
+                    padding: 5px;
+                    height: 50px;
+                }
+                .comment-input__button {
+                    width: 20%;
+                    height: 50px;
+                    background: url("../img/add-icon.png") no-repeat center;
+                    &:hover {
+                        animation: spin 2.5s linear infinite;
+                        transform-origin: 50% 50%;
                     }
                 }
             }
@@ -218,7 +280,7 @@ body {
         left: 44%;
         width: 149px;
         height: 32px;
-        background-color: #fff;
+        background-color: $background;
         border-radius: 10px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
         display: flex;
@@ -241,7 +303,7 @@ body {
         transform: translateZ(0);
     }
     .loading-content__text {
-        color: #7e7e7e;
+        color: $font-color-card;
         font-family: "Segoe";
         font-size: 19px;
         font-weight: 300;
