@@ -29,15 +29,16 @@
 }
 
 @mixin mq-lg {
-    @media (min-width: 1024px) {
+    @media (min-width: 1100px) {
         @content;
     }
 }
 
 $box-shadow: 0px 1px 22px 4px rgba(61, 61, 61, 0.07);
 $border: 6px solid #fff;
-$items: 4;
-$rows: ceil($items/2);
+$items: 8;
+$rows: ceil($items/4);
+// ceil($items/2);
 /* Card sizing */
 
 $card-height: 580px;
@@ -85,17 +86,14 @@ $marker-dist: $card-width+$outer-margin/2 - $marker-size/2;
     }
 }
 
-/* Some Cool Stuff */
+/* Counter items */
 
-$counter: $items - $rows+2;
-@for $i from 1 through $rows {
-    .timeline-card:nth-child(#{$i*2-1}) {
-        order: $i
-    }
-    .timeline-card:nth-child(#{$i*2}) {
-        order: $counter
-    }
-    $counter: $counter+1;
+$counter: 4;
+@for $i from 1 through 4 {
+        .timeline-card:nth-child(#{$i*2}) {
+            order: $counter;
+        }
+        $counter: $counter+1;
 }
 
 /* Loading keyframes */

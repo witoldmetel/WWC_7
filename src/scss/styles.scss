@@ -32,6 +32,7 @@ body {
 
 .hidden {
     display: none;
+    overflow: hidden;
 }
 
 #timeline {
@@ -39,19 +40,27 @@ body {
     position: relative;
     h1.timeline__title {
         text-align: center;
-        font-size: 3rem;
+        font-size: 2rem;
         font-weight: 200;
         margin-bottom: 20px;
+        @include mq-md {
+            font-size: 3rem;
+        }
     }
     p.timeline__description {
         text-align: justify;
         max-width: 75%;
         margin: auto;
         margin-bottom: 45px;
+        font-size: 0.8rem;
+        @include mq-sm {
+            font-size: 1rem;
+        }
     }
     .timeline-wrapper {
         position: relative;
         margin: auto;
+        padding-top: 10px;
         @include mq-lg {
             display: flex;
             flex-flow: column wrap;
@@ -64,10 +73,19 @@ body {
             content: "";
             position: absolute;
             top: -25px;
-            left: 49%;
+            left: 46.5%;
             background: url("../img/circle.png") no-repeat center;
             width: 30px;
             height: 30px;
+             @include mq-sm {
+                left: 47.5%;
+             }
+             @include mq-md {
+                left: 48.5%;
+             }
+             @include mq-md {
+                 left: 49%;
+             }
         }
         &::after {
             z-index: 1;
@@ -86,7 +104,7 @@ body {
     .timeline-card {
         position: relative;
         display: block;
-        margin: 10px auto 80px;
+        margin: 10px auto 40px;
         max-width: 94%;
         z-index: 2;
         background: $background;
@@ -137,6 +155,9 @@ body {
             &:nth-child(2) {
                 margin-top: $stagger;
             }
+            &:nth-child(6) {
+                margin-top: $stagger;
+            }
         }
         .timeline-card--head {
             position: relative;
@@ -148,14 +169,20 @@ body {
             h2 {
                 color: $font-color-card;
                 font-family: "Segoe";
-                font-size: 21px;
+                font-size: 17px;
                 font-weight: 300;
                 line-height: 23px;
                 margin-bottom: 0;
+                @include mq-md {
+                    font-size: 21px;
+                }
             }
         }
         .timeline-card--body {
-            min-height: 330px;
+            min-height: auto;
+            @include mq-lg {
+                min-height: 330px;
+            }
             .content__fig {
                 position: relative;
                 margin: 17px;
@@ -218,6 +245,10 @@ body {
         .comment-cnt {
             color: $font-color-card;
             margin: 20px 17px;
+            padding-bottom: 10px;
+            @include mq-md {
+                padding-bottom: 10px;
+            }
             .comment-list {
                 overflow-y: scroll;
                 max-height: 100px;
@@ -273,13 +304,16 @@ body {
             }
         }
     }
+    .timeline-card.hidden {
+        display: none;
+    }
     .loading-content {
         content: "";
         position: absolute;
         bottom: -35px;
-        left: 44%;
+        left: 25%;
         width: 149px;
-        height: 32px;
+        height: 0;
         background-color: $background;
         border-radius: 10px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
@@ -287,6 +321,18 @@ body {
         justify-content: space-around;
         align-items: center;
         padding-left: 10px;
+        overflow: hidden;
+        line-height: 32px;
+        cursor: pointer;
+        @include mq-sm {
+            left: 33%;
+        }
+        @include mq-md {
+            left: 39%;
+        }
+        @include mq-lg {
+            left: 44%;
+        }
     }
     .loading-content__loader {
         z-index: 2;
@@ -308,6 +354,9 @@ body {
         font-size: 19px;
         font-weight: 300;
         line-height: 23px;
+    }
+    .loading-content.active {
+        height: 32px;
     }
 }
 
